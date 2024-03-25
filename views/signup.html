@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Login and Registration Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+  <style>*{
+
+    margin: 0;
+  
+    padding: 0;
+  
+    box-sizing: border-box;
+  
+    font-family: "Poppins", sans-serif;
+  
+  }
+  
+ #abc{
+  
+    display: flex;
+  
+    justify-content: center;
+  
+    align-items: center;
+  
+    min-height: 100vh;
+  
+    background:url(https://images.unsplash.com/photo-1501975558162-0be7b8ca95ea?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDk2NTI3NDJ8&ixlib=rb-4.0.3&q=85) no-repeat;
+  
+    background-size: cover;
+  
+    background-position: center;
+  
+  }
+  
+  .wrapper{
+  
+    width: 420px;
+  
+    background: transparent;
+  
+    border: 1px solid white;
+  
+    backdrop-filter: blur(4px);
+  
+    color: #fff;
+  
+    border-radius: 12px;
+  
+    padding: 30px 40px;
+  
+    display: none;
+  
+  }
+  
+  .wrapper h1{
+  
+    font-size: 36px;
+  
+    text-align: center;
+  
+  }
+  
+  .wrapper .input-box{
+  
+    position: relative;
+  
+    width: 100%;
+  
+    height: 50px;
+  
+    
+  
+    margin: 30px 0;
+  
+  }
+  
+  .input-box input{
+  
+    width: 100%;
+  
+    height: 100%;
+  
+    background: transparent;
+  
+    border: none;
+  
+    outline: none;
+  
+    border: 1px solid white;
+  
+    border-radius: 40px;
+  
+    font-size: 16px;
+  
+    color: #fff;
+  
+    padding: 20px 45px 20px 20px;
+  
+  }
+  
+  .input-box input::placeholder{
+  
+    color: #fff;
+  
+  }
+  
+  .input-box i{
+  
+    position: absolute;
+  
+    right: 20px;
+  
+    top: 30%;
+  
+    transform: translate(-50%);
+  
+    font-size: 20px;
+  
+  }
+  
+  .wrapper .checkbox1{
+  
+    display: flex;
+  
+    justify-content: space-between;
+  
+    font-size: 14.5px;
+  
+    margin: -15px 0 15px;
+  
+  }
+  
+  .checkbox1 label input{
+  
+    accent-color: #fff;
+  
+    margin-right: 3px;
+  
+  }
+  
+  .checkbox1 a{
+  
+    color: #fff;
+  
+    text-decoration: none;
+  
+  }
+  
+  .checkbox1 a:hover{
+  
+    text-decoration: underline;
+  
+  }
+  
+  #btn2{
+   
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    height: 45px;
+       padding-top: 15px;
+    background: #fff;
+  
+  
+    border-radius: 40px;
+
+    border: 1px solid rgb(45, 39, 39);
+  
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  
+    cursor: pointer;
+  
+    color: #333;
+  
+    font-weight: 600;
+  }
+  
+  .wrapper .link{
+  
+    font-size: 14.5px;
+  
+    text-align: center;
+  
+    margin: 20px 0 15px;
+  
+  }
+  
+  .link p a{
+  
+    color: #fff;
+  
+    text-decoration: none;
+  
+    font-weight: 600;
+  
+  }
+  
+  .link p a:hover{
+  
+    text-decoration: underline;
+  
+  }
+  
+  #loginForm:checked ~ #loginFormContent,
+  
+  #registerForm:checked ~ #registerFormContent,
+  
+  #forgotForm:checked ~ #forgotFormContent {
+  
+    display: block;
+  
+  }
+  
+      input[type="radio"] {
+  
+        display: none;
+  
+      }</style>
+
+</head>
+
+<body>
+   <div id="abc">
+  <input type="radio" id="loginForm" name="formToggle" checked>
+
+<input type="radio" id="registerForm" name="formToggle">
+
+<input type="radio" id="forgotForm" name="formToggle">
+
+  
+
+  <div class="wrapper" id="loginFormContent" >
+
+    <form name="form" ng-submit="vm.register()" role="form" ng-controller="RegisterController">
+
+      <h1>Register</h1>
+
+      <div class="input-box" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+        <!-- <label for="username">First name</label> -->
+        <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" placeholder="First Name"required />
+        <!-- <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span> -->
+    </div>
+
+    <div class="input-box" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+        <!-- <label for="username">Last name</label> -->
+        <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" placeholder="Last Name" required />
+        <!-- <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span> -->
+    </div>
+    <div class="input-box" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+        <!-- <label for="username">Username</label> -->
+        <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" placeholder="Username" required />
+        <!-- <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span> -->
+    </div>
+    <div class="input-box" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+        <!-- <label for="password">Password</label> -->
+        <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" placeholder="Password" required />
+        <!-- <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span> -->
+    </div>
+
+      <div class="checkbox1">
+
+        <label><input type="checkbox">Remember Me</label>
+
+        <label for="forgotForm">Forgot Password</label>
+
+      </div>
+
+      <!-- <a href="./homeContent.html"><button class="btn">Signup</button></a> -->
+      <a href="../home.html" id="btn2">Signup</a>
+
+
+      
+      <div class="link">
+
+        <p>Already have an account? <label for="registerForm">Login</label></p>
+
+      </div>
+
+    </form>
+
+  </div>
+
+<!-- ..... -->
+<div class="wrapper" id="registerFormContent">
+
+    <form action="">
+
+      <h1>Login</h1>
+
+      <div class="input-box">
+
+        <input type="text" placeholder="Username" required>
+
+        
+
+      </div>
+
+      <div class="input-box">
+
+        <input type="email" placeholder="Email" required>
+
+        
+
+      </div>
+
+      <div class="input-box">
+
+        <input type="password" placeholder="Password" required>
+
+        
+
+      </div>
+
+      <div class="checkbox1">
+
+        <label><input type="checkbox" required>I agree to terms & conditions</label>
+
+      </div>
+
+      <a href="../home.html" id="btn2">Login</a>
+
+      <div class="link">
+
+        <p>Don't have an account? <label for="loginForm">Login</label></p>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="wrapper" id="forgotFormContent">
+
+  <!-- <form action="">
+
+      <h1>Reset your password</h1>
+
+      <div class="input-box">
+
+        <input type="email" placeholder="Email" required>
+
+      </div>
+
+      <div class="input-box">
+
+      <button type="submit" class="btn">Send Request</button>
+
+      <div class="link">
+
+        <p>Don't have an account? <label for="registerForm">Register</label></p>
+
+      </div>
+
+    </form> -->
+
+</div>
+
+
+</div>
+
+
+
+
+<script>
+    (function () {
+    'use strict';
+
+    angular
+        .module('app')
+        .controller('RegisterController', RegisterController);
+
+    RegisterController.$inject = ['UserService', '$location', 'FlashService'];
+
+    function RegisterController(UserService, $location, FlashService) {
+        var vm = this;
+
+        // Define properties
+        vm.user = {
+            firstName: '',
+            lastName: '',
+            username: '',
+            password: ''
+        };
+        vm.dataLoading = false; // Initialize dataLoading property
+
+        // Define methods
+        vm.register = register;
+
+        // Function to register user
+        function register() {
+            vm.dataLoading = true;
+            UserService.Create(vm.user)
+                .then(function (response) {
+                    if (response.success) {
+                        FlashService.Success('Registration successful', true);
+                        $location.path('/home');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
+    }
+})();
+
+</script>
+<!-- <script>
+    (function () {
+'use strict';
+
+angular
+    .module('app')
+    .controller('RegisterController', RegisterController);
+
+RegisterController.$inject = ['UserService', '$location', '$rootScope', 'FlashService'];
+function RegisterController(UserService, $location , $rootScope, FlashService) {
+    var vm = this;
+
+    vm.register = register;
+
+    function register() {
+        vm.dataLoading = true;
+        UserService.Create(vm.user)
+            .then(function (response) {
+                if (response.success) {
+                    FlashService.Success('Registration successful', true);
+                    $location.path('/home');
+                } else {
+                    FlashService.Error(response.message);
+                    vm.dataLoading = false;
+                }
+            });
+    }
+}
+
+})();
+</script> -->
+</body>
+
+</html>
